@@ -2,11 +2,19 @@ import { useState } from 'react';
 
 const ListRender = () => {
   const [list] = useState(['Glorfindel', 'Ecthelion', 'Turgon']);
-  const [secondList] = useState([
+  const [users, setUsers] = useState([
     { id: 1, name: 'Legolas' },
     { id: 2, name: 'Feanor' },
     { id: 3, name: 'Fingon' },
   ]);
+
+  const deleteRandom = () => {
+    const randomNumber = Math.floor(Math.random() * 4);
+
+    setUsers((prevUsers) => {
+      return prevUsers.filter((user) => randomNumber !== user.id);
+    });
+  };
 
   return (
     <div>
@@ -19,10 +27,11 @@ const ListRender = () => {
 
       <p>Utilizando chave</p>
       <ul>
-        {secondList.map((secondList) => (
-          <li key={secondList.id}> {secondList.name} </li>
+        {users.map((users) => (
+          <li key={users.id}> {users.name} </li>
         ))}
       </ul>
+      <button onClick={deleteRandom}>Delete random user</button>
     </div>
   );
 };
