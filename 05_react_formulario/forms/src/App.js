@@ -8,7 +8,14 @@ function App() {
   return (
     <div className="App">
       <h2>Forms</h2>
-      <MyForm />
+      <MyForm
+        user={{
+          name: 'Daniel',
+          email: 'moscardinibdaniel@gmail.com',
+          bio: 'Tentando programar',
+          role: 'admin',
+        }}
+      />
     </div>
   );
 }
